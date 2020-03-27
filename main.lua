@@ -7,4 +7,4 @@
 -- Your code here
 
 local composer = require('composer')
-composer.gotoScene("scene1")
+composer.gotoScene("TitlePage")

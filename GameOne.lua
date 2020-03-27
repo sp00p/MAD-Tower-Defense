@@ -15,29 +15,44 @@ local bg
 local title
 local button
 
-local function gotoScene2()
+flag = "GameOne"
 
-  composer.gotoScene("scene2", {time=800, effect="slideRight"})
+local function gotoSceneMap()
+
+  composer.gotoScene("Map", {time=800, effect="fromBottom"})
 
 end
+
+local function gotoSceneSettings()
+
+   composer.gotoScene("Settings")
+   flag = "GameOne"
+ 
+ end
+
 -- "scene:create
 function scene:create( event )
 
    local sceneGroup = self.view
 
    bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-   bg:setFillColor(0,1,0)
+   bg:setFillColor(0,0,1)
    sceneGroup:insert(bg)
 
-   title = display.newText("Title Screen", display.contentCenterX, display.contentCenterY, "SFAutomaton", 40)
-   title:setFillColor(0,0,1)
+   title = display.newText("Gameplay", display.contentCenterX, display.contentCenterY, "SFAutomaton", 40)
+   title:setFillColor(1,0,0)
    sceneGroup:insert(title)
 
-   button = display.newRoundedRect( display.contentCenterX, display.contentHeight*.8, display.contentHeight*.2, display.contentCenterY*.5, 20)
-   button:setFillColor(1,0,0)
-   sceneGroup:insert(button)
+   buttonMap = display.newRoundedRect( display.contentCenterX, display.contentHeight*.8, display.contentHeight*.2, display.contentCenterY*.5, 20)
+   buttonMap:setFillColor(1,0,0)
+   sceneGroup:insert(buttonMap)
 
-   button:addEventListener("tap", gotoScene2)
+   buttonSettings = display.newRoundedRect(display.contentWidth*.925, display.contentHeight*.1, display.contentHeight*.1, display.contentHeight*.1, 20)
+   buttonSettings:setFillColor(1,0,0)
+   sceneGroup:insert(buttonSettings)
+
+   buttonMap:addEventListener("tap", gotoSceneMap)
+   buttonSettings:addEventListener("tap", gotoSceneSettings)
 
    -- Initialize the scene here.
    -- Example: add display objects to "sceneGroup", add touch listeners, etc.

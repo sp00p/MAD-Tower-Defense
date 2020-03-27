@@ -15,29 +15,34 @@ local bg
 local title
 local button
 
-local function gotoScene1()
-
-  composer.gotoScene("scene1", {time=800, effect="slideLeft"})
-
+local function gotoScene()
+   if flag == "TitlePage" then
+      composer.gotoScene("TitlePage")
+   elseif flag == "Map" then
+      composer.gotoScene("Map")
+   elseif flag == "GameOne" then
+      composer.gotoScene("GameOne")
+   end
 end
--- "scene:create()"
+
+-- "scene:create
 function scene:create( event )
 
    local sceneGroup = self.view
 
    bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-   bg:setFillColor(0,0,1)
+   bg:setFillColor(1,0,0)
    sceneGroup:insert(bg)
 
-   title = display.newText("Game", display.contentCenterX, display.contentCenterY, "SFAutomaton", 40)
+   title = display.newText("Settings", display.contentCenterX, display.contentCenterY, "SFAutomaton", 40)
    title:setFillColor(0,1,0)
    sceneGroup:insert(title)
 
    button = display.newRoundedRect( display.contentCenterX, display.contentHeight*.8, display.contentHeight*.2, display.contentCenterY*.5, 20)
-   button:setFillColor(1,0,0)
+   button:setFillColor(0,1,0)
    sceneGroup:insert(button)
 
-   button:addEventListener("tap", gotoScene1)
+   button:addEventListener("tap", gotoScene)
 
    -- Initialize the scene here.
    -- Example: add display objects to "sceneGroup", add touch listeners, etc.
