@@ -9,34 +9,35 @@ local scene = composer.newScene()
 -- local forward references should go here
 
 ---------------------------------------------------------------------------------
-
 display.setStatusBar(display.HiddenStatusBar)
 
--- local bg
--- local title
--- local button
+local bg
+local title
+local button
 
--- local function gotoScene2()
---    composer.gotoScene("scene2", {time = 400, effect = "slideLeft"})
--- end
+local function gotoScene2()
 
--- "scene:create()"
+  composer.gotoScene("scene2", {time=800, effect="slideRight"})
+
+end
+-- "scene:create
 function scene:create( event )
 
    local sceneGroup = self.view
 
-      -- bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-      -- sceneGroup:insert(bg)
+   bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+   bg:setFillColor(0,1,0)
+   sceneGroup:insert(bg)
 
-      -- title = display.newText("Mazda", display.contentCenterX, display.contentCenterY, "SFAutomaton", 100)
-      -- title:setFillColor(0, 0, 1)
-      -- sceneGroup:insert(title)
+   title = display.newText("Title Screen", display.contentCenterX, display.contentCenterY, "SFAutomaton", 40)
+   title:setFillColor(0,0,1)
+   sceneGroup:insert(title)
 
-      -- button = display.newRoundedRect(display.contentCenterX, display.contentHeight * .8, display.contentWidth * .2, display.contentHeight * .05, 12)
-      -- button:setFillColor(1, 0 ,0)
-      -- sceneGroup:insert(button)
+   button = display.newRoundedRect( display.contentCenterX, display.contentHeight*.8, display.contentHeight*.2, display.contentCenterY*.5, 20)
+   button:setFillColor(1,0,0)
+   sceneGroup:insert(button)
 
-      -- button:addEventListener("tap", gotoScene2)
+   button:addEventListener("tap", gotoScene2)
 
    -- Initialize the scene here.
    -- Example: add display objects to "sceneGroup", add touch listeners, etc.
