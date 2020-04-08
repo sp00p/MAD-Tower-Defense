@@ -22,6 +22,8 @@ local function gotoScene()
       composer.gotoScene("Map")
    elseif flag == "GameOne" then
       composer.gotoScene("GameOne")
+   elseif flag == "GameTwo" then
+      composer.gotoScene("GameTwo")
    end
 end
 

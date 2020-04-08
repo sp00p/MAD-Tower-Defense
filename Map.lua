@@ -27,14 +27,20 @@ local function gotoSceneGameOne()
 
    composer.gotoScene("GameOne", {time=800, effect="zoomOutIn"})
  
- end
+end
 
- local function gotoSceneSettings()
+local function gotoSceneGameTwo()
+
+   composer.gotoScene("GameTwo", {time=800, effect="zoomOutIn"})
+ 
+end
+
+local function gotoSceneSettings()
 
    composer.gotoScene("Settings")
    flag = "Map"
  
- end
+end
 
 -- "scene:create()"
 function scene:create( event )
@@ -53,9 +59,13 @@ function scene:create( event )
    buttonTitle:setFillColor(1,0,0)
    sceneGroup:insert(buttonTitle)
 
-   buttonGameOne = display.newRoundedRect(display.contentCenterX, display.contentHeight*.2, display.contentHeight*.2, display.contentCenterY*.5, 20)
+   buttonGameOne = display.newRoundedRect(display.contentCenterX - 200, display.contentHeight*.2, display.contentHeight*.2, display.contentCenterY*.5, 20)
    buttonGameOne:setFillColor(0,1,0)
    sceneGroup:insert(buttonGameOne)
+
+   buttonGameTwo = display.newRoundedRect(display.contentCenterX + 200, display.contentHeight*.2, display.contentHeight*.2, display.contentCenterY*.5, 20)
+   buttonGameTwo:setFillColor(0,1,0)
+   sceneGroup:insert(buttonGameTwo)
 
    buttonSettings = display.newRoundedRect(display.contentWidth*.925, display.contentHeight*.1, display.contentHeight*.1, display.contentHeight*.1, 20)
    buttonSettings:setFillColor(1,0,0)
@@ -63,6 +73,7 @@ function scene:create( event )
 
    buttonTitle:addEventListener("tap", gotoSceneTitlePage)
    buttonGameOne:addEventListener("tap", gotoSceneGameOne)
+   buttonGameTwo:addEventListener("tap", gotoSceneGameTwo)
    buttonSettings:addEventListener("tap", gotoSceneSettings)
 
    -- Initialize the scene here.

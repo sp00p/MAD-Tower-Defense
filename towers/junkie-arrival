@@ -1,0 +1,72 @@
+--
+-- created with TexturePacker - https://www.codeandweb.com/texturepacker
+--
+-- $TexturePacker:SmartUpdate:f3ffb391130c79e330de5dc2d3a59ddc:38559c6c99f31903fb035ed43156b37f:eeb652e5ce8151839e50231d12e11a4d$
+--
+-- local sheetInfo = require("mysheet")
+-- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
+-- local sprite = display.newSprite( myImageSheet , {frames={sheetInfo:getFrameIndex("sprite")}} )
+--
+
+local SheetInfo = {}
+
+SheetInfo.sheet =
+{
+    frames = {
+    
+        {
+            -- 1
+            x=2,
+            y=2,
+            width=428,
+            height=600,
+
+        },
+        {
+            -- 2
+            x=2,
+            y=604,
+            width=428,
+            height=600,
+
+        },
+        {
+            -- 3
+            x=2,
+            y=1206,
+            width=428,
+            height=600,
+
+        },
+        {
+            -- 4
+            x=2,
+            y=604,
+            width=428,
+            height=600,
+
+        },
+    },
+
+    sheetContentWidth = 432,
+    sheetContentHeight = 1808
+}
+
+SheetInfo.frameIndex =
+{
+
+    ["1"] = 1,
+    ["2"] = 2,
+    ["3"] = 3,
+    ["4"] = 4,
+}
+
+function SheetInfo:getSheet()
+    return self.sheet;
+end
+
+function SheetInfo:getFrameIndex(name)
+    return self.frameIndex[name];
+end
+
+return SheetInfo
