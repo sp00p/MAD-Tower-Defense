@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker - https://www.codeandweb.com/texturepacker
 --
--- $TexturePacker:SmartUpdate:78a65f589de306bfc1c31efb4ee69c3e:28afcddf05aa517e2b9f655b104464cf:11dc3e4dff043026a37f29c722a8b93f$
+-- $TexturePacker:SmartUpdate:10ae561b89e5c7b35837bccc35d7a7a9:e17fb15206b764a1e2c80dba0dc2b24e:11dc3e4dff043026a37f29c722a8b93f$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -18,46 +18,46 @@ SheetInfo.sheet =
             -- Monster 2-1
             x=2,
             y=2,
-            width=930,
-            height=868,
+            width=233,
+            height=217,
 
         },
         {
             -- Monster 2-2
-            x=934,
-            y=2,
-            width=930,
-            height=868,
+            x=2,
+            y=221,
+            width=233,
+            height=217,
 
         },
         {
             -- Monster 2-3
             x=2,
-            y=872,
-            width=930,
-            height=868,
+            y=440,
+            width=233,
+            height=217,
 
         },
         {
             -- Monster 2-4
-            x=934,
-            y=2,
-            width=930,
-            height=868,
+            x=2,
+            y=221,
+            width=233,
+            height=217,
 
         },
         {
             -- Monster 2-5
             x=2,
             y=2,
-            width=930,
-            height=868,
+            width=233,
+            height=217,
 
         },
     },
 
-    sheetContentWidth = 1866,
-    sheetContentHeight = 1742
+    sheetContentWidth = 237,
+    sheetContentHeight = 659
 }
 
 SheetInfo.frameIndex =

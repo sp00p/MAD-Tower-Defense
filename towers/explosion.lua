@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker - https://www.codeandweb.com/texturepacker
 --
--- $TexturePacker:SmartUpdate:8627bb29b081f8a19337686aaf5a26c6:861d7618d4f42b18422c626872d24d2f:19e7742e74c22643d2591db9c7ff239a$
+-- $TexturePacker:SmartUpdate:214974bab268f86c61613ce638c681e3:465d010e523e1f81bf6a062456ec1522:ff6ed9a539a848dae2d91c7b3e7c2dd2$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -15,50 +15,50 @@ SheetInfo.sheet =
     frames = {
     
         {
-            -- 1 - final
+            -- explosion1
             x=2,
             y=2,
-            width=456,
-            height=599,
+            width=118,
+            height=106,
 
         },
         {
-            -- 2 - final
-            x=2,
-            y=603,
-            width=456,
-            height=599,
+            -- explosion2
+            x=122,
+            y=2,
+            width=118,
+            height=106,
 
         },
         {
-            -- 3 - final
+            -- explosion3
             x=2,
-            y=1204,
-            width=456,
-            height=599,
+            y=110,
+            width=118,
+            height=106,
 
         },
         {
-            -- 4 - final
-            x=2,
-            y=603,
-            width=456,
-            height=599,
+            -- explosion4
+            x=122,
+            y=110,
+            width=118,
+            height=106,
 
         },
     },
 
-    sheetContentWidth = 460,
-    sheetContentHeight = 1805
+    sheetContentWidth = 242,
+    sheetContentHeight = 218
 }
 
 SheetInfo.frameIndex =
 {
 
-    ["1 - final"] = 1,
-    ["2 - final"] = 2,
-    ["3 - final"] = 3,
-    ["4 - final"] = 4,
+    ["explosion1"] = 1,
+    ["explosion2"] = 2,
+    ["explosion3"] = 3,
+    ["explosion4"] = 4,
 }
 
 function SheetInfo:getSheet()
