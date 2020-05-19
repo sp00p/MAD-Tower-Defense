@@ -2,6 +2,10 @@ local composer = require( "composer" )
 local physics = require("physics")
 local scene = composer.newScene()
 
+physics.start()
+
+--physics.setDrawMode("hybrid")
+
 ---------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE
 -- unless "composer:removeScene()" is called.
@@ -61,7 +65,7 @@ function scene:show( event )
 
 
 
-      -- Initialize Rows (Dislay Opjects) --
+      -- Initialize Rows (Display Opjects) --
       row1DO = display.newRect(cX*1.1, cY*.4, cX*2, 10)
       row2DO = display.newRect(cX*1.1, cY*.7, cX*2, 10)
       row3DO = display.newRect(cX*1.1, cY, cX*2, 10)
@@ -81,7 +85,13 @@ function scene:show( event )
       local row4 = {}
       local row5 = {}
 
-      local roundNumber = 0
+      local row1Towers = {}
+      local row2Towers = {}
+      local row3Towers = {}
+      local row4Towers = {}
+      local row5Towers = {}
+
+      local projectiles = {}
 
       -- Initialize Tower Positions --
       local positions = {}
@@ -143,7 +153,20 @@ function scene:show( event )
         if positions[newPosNum].isOccupied == false or positions[newPosNum].isOccupied == nil then
           positions[newPosNum].isOccupied = true
 
-          table.insert(activeTowers, display.newRect(positions[tonumber(pos)].x, positions[tonumber(pos)].y, 30, 30))
+          local newTower = display.newRect(positions[tonumber(pos)].x, positions[tonumber(pos)].y, 30, 30)
+          table.insert(activeTowers, newTower)
+
+          if (positions[newPosNum].y == cY*.4) then
+            table.insert(row1Towers, newTower)
+          elseif (positions[newPosNum].y == cY*.7) then
+            table.insert(row2Towers, newTower)
+          elseif (positions[newPosNum].y == cY) then
+            table.insert(row3Towers, newTower)
+          elseif (positions[newPosNum].y == cY*1.3) then
+            table.insert(row4Towers, newTower)
+          elseif (positions[newPosNum].y == cY*1.6) then
+            table.insert(row5Towers, newTower)
+          end
 
           for i = 1, #activeTowers do
             activeTowers[i].id = "Tower"..i
@@ -156,58 +179,157 @@ function scene:show( event )
 
       end
 
-      local function spawnEnemies()
+
+      local function spawnEnemies(event)
 
         local rowNum = math.random(1, 5)
 
         if rowNum == 1 then
-          table.insert(row1, display.newCircle(row1DO.contentWidth + (row1DO.contentWidth * 0.5), row1DO.y, 50))
+          local newEnemy = display.newCircle(row1DO.x + (row1DO.x/1.5), row1DO.y, 50)
+          physics.addBody(newEnemy, "dynamic", {radius = 50})
+          newEnemy.gravityScale = 0
+          newEnemy.isSensor = true
+          sceneGroup:insert(newEnemy)
+          newEnemy:setLinearVelocity(-100, 0)
+          newEnemy:addEventListener("collision", newEnemy)
+          table.insert(row1, newEnemy)
 
           for i = 1, #row1 do
             row1[i].id = "row1("..i..")"
             row1[i].damageMult = 50
             row1[i]:setFillColor(0,0,1)
+            --print(row1[i].id)
+          end
+
+          function newEnemy:collision(event)
+            print('hit')
+
+            if event.phase == "began" then
+                self:removeEventListener("collision", self)
+                self:removeSelf()
+                self = nil
+
+            end
+
           end
 
           print("1")
 
         elseif rowNum == 2 then
-          table.insert(row2, display.newCircle(row2DO.contentWidth + (row2DO.contentWidth * 0.5), row2DO.y, 50))
+          local newEnemy = display.newCircle(row2DO.x + (row2DO.x/1.5), row2DO.y, 50)
+          physics.addBody(newEnemy, "dynamic", {radius = 50})
+          newEnemy.gravityScale = 0
+          newEnemy.isSensor = true
+          sceneGroup:insert(newEnemy)
+          newEnemy:setLinearVelocity(-100, 0)
+          newEnemy:addEventListener("collision", newEnemy)
+          table.insert(row2, newEnemy)
 
           for i = 1, #row2 do
             row2[i].id = "row2("..i..")"
             row2[i].damageMult = 50
             row2[i]:setFillColor(0,0,1)
+            --print(row2[i].id)
+          end
+
+          function newEnemy:collision(event)
+            print('hit')
+
+            if event.phase == "began" then
+                self:removeEventListener("collision", self)
+                self:removeSelf()
+                self = nil
+
+            end
+
           end
 
           print("2")
 
         elseif rowNum == 3 then
-          table.insert(row3, display.newCircle(row3DO.contentWidth + (row3DO.contentWidth * 0.5), row3DO.y, 50))
+          local newEnemy = display.newCircle(row3DO.x + (row3DO.x/1.5), row3DO.y, 50)
+          physics.addBody(newEnemy, "dynamic", {radius = 50})
+          newEnemy.gravityScale = 0
+          newEnemy.isSensor = true
+          sceneGroup:insert(newEnemy)
+          newEnemy:setLinearVelocity(-100, 0)
+          newEnemy:addEventListener("collision", newEnemy)
+          table.insert(row3, newEnemy)
           for i = 1, #row3 do
             row3[i].id = "row3("..i..")"
             row3[i].damageMult = 50
             row3[i]:setFillColor(0,0,1)
+            --print(row3[i].id)
+          end
+
+          function newEnemy:collision(event)
+            print('hit')
+
+            if event.phase == "began" then
+                self:removeEventListener("collision", self)
+                self:removeSelf()
+                self = nil
+            end
+
           end
 
           print("3")
 
         elseif rowNum == 4 then
-          table.insert(row4, display.newCircle(row4DO.contentWidth + (row4DO.contentWidth * 0.5), row4DO.y, 50))
+          local newEnemy = display.newCircle(row4DO.x + (row4DO.x/1.5), row4DO.y, 50)
+          physics.addBody(newEnemy, "dynamic", {radius = 50})
+          newEnemy.gravityScale = 0
+          newEnemy.isSensor = true
+          sceneGroup:insert(newEnemy)
+          newEnemy:setLinearVelocity(-100, 0)
+          newEnemy:addEventListener("collision", newEnemy)
+          table.insert(row4, newEnemy)
           for i = 1, #row4 do
             row4[i].id = "row4("..i..")"
             row4[i].damageMult = 50
             row4[i]:setFillColor(0,0,1)
+            --print(row4[i].id)
+          end
+
+          function newEnemy:collision(event)
+            print('hit')
+
+            if event.phase == "began" then
+                self:removeEventListener("collision", self)
+                self:removeSelf()
+                self = nil
+            end
+
           end
 
           print("4")
 
         elseif rowNum ==  5 then
-          table.insert(row5, display.newCircle(row5DO.contentWidth + (row5DO.contentWidth * 0.5), row5DO.y, 50))
+          local newEnemy = display.newCircle(row5DO.x + (row5DO.x/1.5), row5DO.y, 50)
+          physics.addBody(newEnemy, "dynamic", {radius = 50})
+          newEnemy.gravityScale = 0
+          newEnemy.isSensor = true
+          sceneGroup:insert(newEnemy)
+          newEnemy:setLinearVelocity(-100, 0)
+          newEnemy:addEventListener("collision", newEnemy)
+          table.insert(row5, newEnemy)
           for i = 1, #row5 do
             row5[i].id = "row5("..i..")"
             row5[i].damageMult = 50
             row5[i]:setFillColor(0,0,1)
+            --print(row5[i].id)
+          end
+
+          function newEnemy:collision(event)
+            print('hit')
+
+            if event.phase == "began" then
+                self:removeEventListener("collision", self)
+                self:removeSelf()
+                self = nil
+
+            end
+
           end
 
           print("5")
@@ -215,6 +337,7 @@ function scene:show( event )
         end
 
       end
+
 
       local function getPosTap(event)
 
@@ -234,7 +357,42 @@ function scene:show( event )
         sceneGroup:insert(positions[i])
       end
 
+      local function startSpawning()
 
+        timer.performWithDelay(1000, spawnEnemies, -1)
+
+      end
+
+      local function startShooting()
+
+        for i = 1, #activeTowers do
+
+          local newProjectile = display.newRect(activeTowers[i].x, activeTowers[i].y, 10, 10)
+          newProjectile:setFillColor(0,1,0)
+          physics.addBody(newProjectile, "dynamic")
+          newProjectile.gravityScale = 0
+          newProjectile.isSensor = true
+          sceneGroup:insert(newProjectile)
+          newProjectile:addEventListener("collision", newProjectile)
+          table.insert(projectiles, newProjectile)
+          newProjectile:setLinearVelocity(100, 0)
+
+          function newProjectile:collision(event)
+
+            if event.phase == "began" then
+              self:removeEventListener("collision")
+              self:removeSelf()
+              self = nil
+
+            end
+
+          end
+
+
+        end
+
+
+      end
 
       backButton = display.newRoundedRect( display.contentCenterX*1.8, display.contentHeight*0.1, 50, 50, 20)
       backButton:setFillColor(1,0,0)
@@ -246,7 +404,12 @@ function scene:show( event )
       local waveStartButton = display.newRect(display.contentCenterX, display.contentCenterY*1.8, 50, 20)
       waveStartButton:setFillColor(1,0,0)
       sceneGroup:insert(waveStartButton)
-      waveStartButton:addEventListener("tap", spawnEnemies)
+      waveStartButton:addEventListener("tap", startSpawning)
+
+      local startShootingButton = display.newRect(display.contentCenterX*1.5, display.contentCenterY*1.8, 50, 20)
+      startShootingButton:setFillColor(0,1,0)
+      sceneGroup:insert(startShootingButton)
+      startShootingButton:addEventListener("tap", startShooting)
 
     end
 
