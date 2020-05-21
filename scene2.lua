@@ -93,6 +93,8 @@ function scene:show( event )
 
       local projectiles = {}
 
+      local x = 0 
+
       -- Initialize Tower Positions --
       local positions = {}
         positions[1] = display.newRect(cX*.5, cY*.4, 10, 10)
@@ -179,6 +181,22 @@ function scene:show( event )
 
       end
 
+ 
+	  local pointsText = display.newText("Points: "..x, display.contentCenterX, display.contentCenterY*0.3, 200, 100)
+      sceneGroup:insert(pointsText)
+      
+
+      local function addPoints(numberOfPoints)
+
+		local currentPoints = x + numberOfPoints 
+		pointsText.text = "Points: "..currentPoints 
+		x = currentPoints 
+		
+
+      end 
+
+      
+
 
       local function spawnEnemies(event)
 
@@ -195,10 +213,10 @@ function scene:show( event )
           table.insert(row1, newEnemy)
 
           for i = 1, #row1 do
-            row1[i].id = "row1("..i..")"
-            row1[i].damageMult = 50
-            row1[i]:setFillColor(0,0,1)
-            --print(row1[i].id)
+		      row1[i].id = "row1("..i..")"
+		      row1[i].damageMult = 50
+		    --row1[i]:setFillColor(0,0,1)
+		    --print(row1[i].id)
           end
 
           function newEnemy:collision(event)
@@ -208,6 +226,7 @@ function scene:show( event )
                 self:removeEventListener("collision", self)
                 self:removeSelf()
                 self = nil
+                addPoints(1)
 
             end
 
@@ -226,10 +245,9 @@ function scene:show( event )
           table.insert(row2, newEnemy)
 
           for i = 1, #row2 do
-            row2[i].id = "row2("..i..")"
-            row2[i].damageMult = 50
-            row2[i]:setFillColor(0,0,1)
-            --print(row2[i].id)
+		      row2[i].id = "row2("..i..")"
+		      row2[i].damageMult = 50
+		    --row2[i]:setFillColor(0,0,1)
           end
 
           function newEnemy:collision(event)
@@ -239,6 +257,7 @@ function scene:show( event )
                 self:removeEventListener("collision", self)
                 self:removeSelf()
                 self = nil
+                addPoints(1)
 
             end
 
@@ -256,10 +275,10 @@ function scene:show( event )
           newEnemy:addEventListener("collision", newEnemy)
           table.insert(row3, newEnemy)
           for i = 1, #row3 do
-            row3[i].id = "row3("..i..")"
-            row3[i].damageMult = 50
-            row3[i]:setFillColor(0,0,1)
-            --print(row3[i].id)
+		      row3[i].id = "row3("..i..")"
+		      row3[i].damageMult = 50
+		    --row3[i]:setFillColor(0,0,1)
+		    --print(row3[i].id)
           end
 
           function newEnemy:collision(event)
@@ -269,6 +288,7 @@ function scene:show( event )
                 self:removeEventListener("collision", self)
                 self:removeSelf()
                 self = nil
+                addPoints(1)
             end
 
           end
@@ -285,10 +305,10 @@ function scene:show( event )
           newEnemy:addEventListener("collision", newEnemy)
           table.insert(row4, newEnemy)
           for i = 1, #row4 do
-            row4[i].id = "row4("..i..")"
-            row4[i].damageMult = 50
-            row4[i]:setFillColor(0,0,1)
-            --print(row4[i].id)
+		      row4[i].id = "row4("..i..")"
+		      row4[i].damageMult = 50
+		    --row4[i]:setFillColor(0,0,1)
+		    --print(row4[i].id)
           end
 
           function newEnemy:collision(event)
@@ -298,6 +318,7 @@ function scene:show( event )
                 self:removeEventListener("collision", self)
                 self:removeSelf()
                 self = nil
+                addPoints(1)
             end
 
           end
@@ -314,10 +335,11 @@ function scene:show( event )
           newEnemy:addEventListener("collision", newEnemy)
           table.insert(row5, newEnemy)
           for i = 1, #row5 do
-            row5[i].id = "row5("..i..")"
-            row5[i].damageMult = 50
-            row5[i]:setFillColor(0,0,1)
-            --print(row5[i].id)
+	      	row5[i].id = "row5("..i..")"
+	        row5[i].damageMult = 50
+	      --row5[i]:setFillColor(0,0,1)
+	      --print(row5[i].id)
+
           end
 
           function newEnemy:collision(event)
@@ -327,6 +349,7 @@ function scene:show( event )
                 self:removeEventListener("collision", self)
                 self:removeSelf()
                 self = nil
+                addPoints(1)
 
             end
 
