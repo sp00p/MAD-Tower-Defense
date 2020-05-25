@@ -35,8 +35,9 @@ function scene:create( event )
 
    local sceneGroup = self.view
 
-   background = display.newImage("background/campaignBackground.png", display.contentCenterX, display.contentCenterY)
-   sceneGroup:insert(background)
+   bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+   bg:setFillColor(0,1,0)
+   sceneGroup:insert(bg)
 
    title = display.newText("Title Screen", display.contentCenterX, display.contentCenterY, "SFAutomaton", 40)
    title:setFillColor(0,0,1)
@@ -46,8 +47,8 @@ function scene:create( event )
    buttonMap:setFillColor(1,0,0)
    sceneGroup:insert(buttonMap)
 
-   buttonSettings = display.newImage("buttons/circle.png", display.contentWidth*.925, display.contentHeight*.1)
-   buttonSettings.xScale, buttonSettings.yScale = 7, 7
+   buttonSettings = display.newRoundedRect(display.contentWidth*.925, display.contentHeight*.1, display.contentHeight*.1, display.contentHeight*.1, 20)
+   buttonSettings:setFillColor(1,0,0)
    sceneGroup:insert(buttonSettings)
 
    buttonMap:addEventListener("tap", gotoSceneMap)

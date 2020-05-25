@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker - https://www.codeandweb.com/texturepacker
 --
--- $TexturePacker:SmartUpdate:b64c861b4137ad3e23c2ccb2a329dee0:2e6407fb58d7eb6c6497d2993843bb18:bfa88de5894008f8241ad8c3fc1da557$
+-- $TexturePacker:SmartUpdate:ed7080e8375c15aac5a87601c449bf9f:0180588186c0918957c081ce210daf1c:6d9b59b8df23e921962a0d27a36a0d67$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -17,87 +17,95 @@ SheetInfo.sheet =
         {
             -- idle1
             x=2,
-            y=809,
-            width=156,
-            height=188,
+            y=306,
+            width=117,
+            height=141,
 
         },
         {
             -- idle2
-            x=160,
-            y=809,
-            width=156,
-            height=181,
+            x=121,
+            y=306,
+            width=117,
+            height=135,
 
         },
         {
             -- idle3
-            x=170,
-            y=595,
-            width=154,
-            height=187,
+            x=240,
+            y=306,
+            width=116,
+            height=141,
 
         },
         {
             -- idle4
-            x=170,
-            y=400,
-            width=152,
-            height=193,
+            x=372,
+            y=302,
+            width=114,
+            height=145,
 
         },
         {
             -- idle5
-            x=170,
-            y=2,
-            width=152,
-            height=200,
+            x=256,
+            y=154,
+            width=114,
+            height=150,
 
         },
         {
             -- idle6
-            x=170,
-            y=204,
-            width=152,
-            height=194,
+            x=372,
+            y=154,
+            width=114,
+            height=146,
 
         },
         {
             -- shoot1
             x=2,
-            y=608,
-            width=166,
-            height=199,
+            y=2,
+            width=125,
+            height=150,
 
         },
         {
             -- shoot2
-            x=2,
+            x=129,
             y=2,
-            width=166,
-            height=200,
+            width=125,
+            height=150,
 
         },
         {
             -- shoot3
-            x=2,
-            y=204,
-            width=166,
-            height=200,
+            x=256,
+            y=2,
+            width=125,
+            height=150,
 
         },
         {
             -- shoot4
             x=2,
-            y=406,
-            width=166,
-            height=200,
+            y=154,
+            width=125,
+            height=150,
+
+        },
+        {
+            -- shoot5
+            x=129,
+            y=154,
+            width=125,
+            height=150,
 
         },
     },
 
-    sheetContentWidth = 326,
-    sheetContentHeight = 999
+    sheetContentWidth = 488,
+    sheetContentHeight = 449
 }
 
 SheetInfo.frameIndex =
@@ -113,18 +121,8 @@ SheetInfo.frameIndex =
     ["shoot2"] = 8,
     ["shoot3"] = 9,
     ["shoot4"] = 10,
+    ["shoot5"] = 11,
 }
-
-SheetInfo.sequences = {
-
-    {name = "idle", start = 1, count = 6, time = 200},
-    {name = "shoot", start = 7, count = 4, time = 200},
-
-}
-
-function SheetInfo:getSequences()
-    return self.sequences
-end
 
 function SheetInfo:getSheet()
     return self.sheet;

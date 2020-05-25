@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker - https://www.codeandweb.com/texturepacker
 --
--- $TexturePacker:SmartUpdate:efd83314be10154de3fdca346b3bbf5d:36f916e4c027ef8a251ed971a5324ef2:c387cf20f1a7664df7fc5f8b10a859ed$
+-- $TexturePacker:SmartUpdate:91be563533cfed5d53a126865657bb9f:f2c1670828c0a78bde34ca617b2e6543:c387cf20f1a7664df7fc5f8b10a859ed$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -18,46 +18,46 @@ SheetInfo.sheet =
             -- Monster 4-1
             x=2,
             y=2,
-            width=182,
-            height=168,
+            width=202,
+            height=186,
 
         },
         {
             -- Monster 4-2
             x=2,
-            y=512,
-            width=167,
-            height=181,
+            y=566,
+            width=186,
+            height=202,
 
         },
         {
             -- Monster 4-3
             x=2,
-            y=172,
-            width=182,
-            height=168,
+            y=190,
+            width=202,
+            height=186,
 
         },
         {
             -- Monster 4-4
             x=2,
-            y=695,
-            width=167,
-            height=181,
+            y=770,
+            width=186,
+            height=202,
 
         },
         {
             -- Monster 4-5
             x=2,
-            y=342,
-            width=182,
-            height=168,
+            y=378,
+            width=202,
+            height=186,
 
         },
     },
 
-    sheetContentWidth = 186,
-    sheetContentHeight = 878
+    sheetContentWidth = 206,
+    sheetContentHeight = 974
 }
 
 SheetInfo.frameIndex =
@@ -72,7 +72,7 @@ SheetInfo.frameIndex =
 
 SheetInfo.sequences = {
 
-    {name = "explode", start = 1, count = 4, time = 500},
+    {name = "walking", start = 1, count = 5, time = 500},
 
 }
 
