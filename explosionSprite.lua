@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker - https://www.codeandweb.com/texturepacker
 --
--- $TexturePacker:SmartUpdate:efd83314be10154de3fdca346b3bbf5d:36f916e4c027ef8a251ed971a5324ef2:c387cf20f1a7664df7fc5f8b10a859ed$
+-- $TexturePacker:SmartUpdate:0cfb045b513d739f6a72e89c136a1769:4cb48ceba6d923c02f812310520c2cd3:d233c3a65ee0fa44981c6613932cb6c0$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -15,59 +15,50 @@ SheetInfo.sheet =
     frames = {
     
         {
-            -- Monster 4-1
+            -- 1explosion
             x=2,
             y=2,
-            width=182,
-            height=168,
+            width=189,
+            height=170,
 
         },
         {
-            -- Monster 4-2
-            x=2,
-            y=512,
-            width=167,
-            height=181,
+            -- 2explosion
+            x=193,
+            y=2,
+            width=189,
+            height=170,
 
         },
         {
-            -- Monster 4-3
+            -- 3explosion
             x=2,
-            y=172,
-            width=182,
-            height=168,
+            y=174,
+            width=189,
+            height=170,
 
         },
         {
-            -- Monster 4-4
-            x=2,
-            y=695,
-            width=167,
-            height=181,
-
-        },
-        {
-            -- Monster 4-5
-            x=2,
-            y=342,
-            width=182,
-            height=168,
+            -- 4explosion
+            x=193,
+            y=174,
+            width=189,
+            height=170,
 
         },
     },
 
-    sheetContentWidth = 186,
-    sheetContentHeight = 878
+    sheetContentWidth = 384,
+    sheetContentHeight = 346
 }
 
 SheetInfo.frameIndex =
 {
 
-    ["Monster 4-1"] = 1,
-    ["Monster 4-2"] = 2,
-    ["Monster 4-3"] = 3,
-    ["Monster 4-4"] = 4,
-    ["Monster 4-5"] = 5,
+    ["1explosion"] = 1,
+    ["2explosion"] = 2,
+    ["3explosion"] = 3,
+    ["4explosion"] = 4,
 }
 
 SheetInfo.sequences = {
