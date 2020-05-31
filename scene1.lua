@@ -20,24 +20,35 @@ local function gotoScene2()
   composer.gotoScene("scene2", {time=800, effect="slideRight"})
 
 end
+
+local function gotoScene3()
+
+	composer.gotoScene("scene3", {time=800, effect="slideLeft"})
+
+end 
 -- "scene:create
 function scene:create( event )
 
-   local sceneGroup = self.view
+	local sceneGroup = self.view
 
-   bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-   bg:setFillColor(0,1,0)
-   sceneGroup:insert(bg)
+	bg = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+	bg:setFillColor(0,1,0)
+	sceneGroup:insert(bg)
 
-   title = display.newText("Title Screen", display.contentCenterX, display.contentCenterY, "SFAutomaton", 40)
-   title:setFillColor(0,0,1)
-   sceneGroup:insert(title)
+	title = display.newText("Title Screen", display.contentCenterX, display.contentCenterY, "SFAutomaton", 40)
+	title:setFillColor(0,0,1)
+	sceneGroup:insert(title)
 
-   button = display.newRoundedRect( display.contentCenterX, display.contentHeight*.8, display.contentHeight*.2, display.contentCenterY*.5, 20)
-   button:setFillColor(1,0,0)
-   sceneGroup:insert(button)
+	button = display.newRoundedRect( display.contentCenterX, display.contentHeight*.8, display.contentHeight*.2, display.contentCenterY*.5, 20)
+	button:setFillColor(1,0,0)
+	sceneGroup:insert(button)
 
-   button:addEventListener("tap", gotoScene2)
+	campaignButton = display.newRoundedRect(display.contentCenterX - 250, display.contentHeight*.8, display.contentHeight*.2, display.contentCenterY*.5, 20)
+	campaignButton:setFillColor(0,0,1)
+	sceneGroup:insert(campaignButton)
+	
+	button:addEventListener("tap", gotoScene2)
+	campaignButton:addEventListener("tap", gotoScene3)
 
    -- Initialize the scene here.
    -- Example: add display objects to "sceneGroup", add touch listeners, etc.
