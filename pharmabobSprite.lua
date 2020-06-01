@@ -117,8 +117,8 @@ SheetInfo.frameIndex =
 
 SheetInfo.sequences = {
 
-    {name = "idle", start = 1, count = 6, time = 200},
-    {name = "shoot", start = 7, count = 4, time = 200},
+    {name = "idle", start = 1, count = 6, time = 500},
+    {name = "shoot", start = 7, count = 4, time = 500},
 
 }
 

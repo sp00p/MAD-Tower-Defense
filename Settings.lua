@@ -16,15 +16,21 @@ local title
 local button
 
 local function gotoScene()
-   if flag == "TitlePage" then
+   if flag == "sceneTitle" then
       composer.gotoScene("TitlePage")
    elseif flag == "Map" then
       composer.gotoScene("Map")
-   elseif flag == "GameOne" then
-      composer.gotoScene("GameOne")
-   elseif flag == "GameTwo" then
-      composer.gotoScene("GameTwo")
+   elseif flag == "level1" then
+      composer.gotoScene("level1")
+   elseif flag == "level2" then
+      composer.gotoScene("level2")
+   elseif flag == "level3" then
+      composer.gotoScene("level3")
    end
+end
+
+local function gotoSceneTitle()
+   composer.gotoScene("TitlePage")
 end
 
 -- "scene:create
@@ -44,7 +50,12 @@ function scene:create( event )
    button:setFillColor(0,1,0)
    sceneGroup:insert(button)
 
+   buttonTitle = display.newRoundedRect( display.contentCenterX - 250, display.contentHeight*.8, display.contentHeight*.2, display.contentCenterY*.5, 20)
+   button:setFillColor(0,1,0)
+   sceneGroup:insert(buttonTitle)
+
    button:addEventListener("tap", gotoScene)
+   buttonTitle:addEventListener("tap", gotoSceneTitle)
 
    -- Initialize the scene here.
    -- Example: add display objects to "sceneGroup", add touch listeners, etc.

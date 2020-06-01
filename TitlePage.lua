@@ -15,7 +15,7 @@ local bg
 local title
 local button
 
-flag = "TitlePage"
+flag = "sceneTitle"
 
 local function gotoSceneMap()
 
@@ -26,7 +26,13 @@ end
 local function gotoSceneSettings()
 
    composer.gotoScene("Settings")
-   flag = "TitlePage"
+   flag = "sceneTitle"
+
+ end
+
+ local function gotoSceneTest()
+
+   composer.gotoScene("sceneTest", {time=800, effect="slideRight"})
  
  end
 
@@ -35,23 +41,38 @@ function scene:create( event )
 
    local sceneGroup = self.view
 
-   background = display.newImage("background/campaignBackground.png", display.contentCenterX, display.contentCenterY)
+   background = display.newImage("background/campaignBackground2.png", display.contentCenterX, display.contentCenterY)
    sceneGroup:insert(background)
 
    title = display.newText("Title Screen", display.contentCenterX, display.contentCenterY, "SFAutomaton", 40)
    title:setFillColor(0,0,1)
    sceneGroup:insert(title)
 
-   buttonMap = display.newRoundedRect(display.contentCenterX, display.contentHeight*.8, display.contentHeight*.2, display.contentCenterY*.5, 20)
-   buttonMap:setFillColor(1,0,0)
+   -- buttonMap = display.newRoundedRect(display.contentCenterX, display.contentHeight*.8, display.contentHeight*.2, display.contentCenterY*.5, 20)
+   -- buttonMap:setFillColor(1,0,0)
+   -- sceneGroup:insert(buttonMap)
+
+   buttonMap = display.newImage("buttons/campaign.png")
+   buttonMap.x, buttonMap.y = display.contentCenterX, display.contentCenterY + 175
+   buttonMap.xScale, buttonMap.yScale = 0.35, 0.35
    sceneGroup:insert(buttonMap)
 
-   buttonSettings = display.newImage("buttons/circle.png", display.contentWidth*.925, display.contentHeight*.1)
-   buttonSettings.xScale, buttonSettings.yScale = 7, 7
+   -- buttonSettings = display.newRoundedRect(display.contentWidth*.925, display.contentHeight*.1, display.contentHeight*.1, display.contentHeight*.1, 20)
+   -- buttonSettings:setFillColor(1,0,0)
+   -- sceneGroup:insert(buttonSettings)
+
+   buttonSettings = display.newImage("buttons/settings.png")
+   buttonSettings.x, buttonSettings.y = display.contentCenterX, display.contentCenterY + 300
+   buttonSettings.xScale, buttonSettings.yScale = 0.35, 0.35
    sceneGroup:insert(buttonSettings)
+
+   buttonTest = display.newRoundedRect( display.contentCenterX - 500, display.contentHeight*.8, display.contentHeight*.2, display.contentCenterY*.5, 20)
+	buttonTest:setFillColor(0,0,1)
+	sceneGroup:insert(buttonTest)
 
    buttonMap:addEventListener("tap", gotoSceneMap)
    buttonSettings:addEventListener("tap", gotoSceneSettings)
+   buttonTest:addEventListener("tap", gotoSceneTest)
 
    -- Initialize the scene here.
    -- Example: add display objects to "sceneGroup", add touch listeners, etc.

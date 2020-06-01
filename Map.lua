@@ -1,5 +1,6 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
+local json = require('json')
 
 ---------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE
@@ -15,7 +16,21 @@ local bg
 local title
 local button
 
-flag = "Map"
+local completedMaps = {1}
+
+local path = system.pathForFile("completedMaps.json", system.DocumentsDirectory)
+
+local file, errorString = io.open(path, "r")
+
+if not file then
+	print("File error: "..errorString)
+else
+	local contents = file:read("*a")
+	table.insert(completedMaps, contents)
+	io.close(file)
+end
+
+flag = "sceneMap"
 
 local function gotoSceneTitlePage()
 
@@ -23,23 +38,29 @@ local function gotoSceneTitlePage()
 
 end
 
-local function gotoSceneGameOne()
+local function gotoLevel1()
 
-   composer.gotoScene("GameOne", {time=800, effect="zoomOutIn"})
- 
+	composer.gotoScene("level1", {time=800, effect="zoomInOut"})
+
 end
 
-local function gotoSceneGameTwo()
+local function gotoLevel2()
 
-   composer.gotoScene("GameTwo", {time=800, effect="zoomOutIn"})
- 
+	composer.gotoScene("level2", {time=800, effect="zoomInOut"})
+
+end
+
+local function gotoLevel3()
+
+	composer.gotoScene("level3", {time=800, effect="zoomInOut"})
+
 end
 
 local function gotoSceneSettings()
 
    composer.gotoScene("Settings")
-   flag = "Map"
- 
+   flag = "sceneMap"
+
 end
 
 -- "scene:create()"
@@ -47,8 +68,13 @@ function scene:create( event )
 
    local sceneGroup = self.view
 
-   background = display.newImage("background/campaignBackground2.png", display.contentCenterX, display.contentCenterY)
-   sceneGroup:insert(background)
+   local bg = display.newImage("/background/campaignBackground.png")
+	bg.x, bg.y = display.contentCenterX, display.contentCenterY
+   sceneGroup:insert(bg)
+   
+   local level1Select = display.newCircle(display.contentCenterX*.5, display.contentCenterY*1.35, 20)
+	local level2Select = display.newCircle(display.contentCenterX*.75, display.contentCenterY*1.34, 20)
+	local level3Select = display.newCircle(display.contentCenterX*0.915, display.contentCenterY*.7, 20)
 
    title = display.newText("Map", display.contentCenterX, display.contentCenterY, "SFAutomaton", 40)
    title:setFillColor(0,1,0)
@@ -58,21 +84,36 @@ function scene:create( event )
    buttonTitle:setFillColor(1,0,0)
    sceneGroup:insert(buttonTitle)
 
-   buttonGameOne = display.newRoundedRect(display.contentCenterX - 200, display.contentHeight*.2, display.contentHeight*.2, display.contentCenterY*.5, 20)
-   buttonGameOne:setFillColor(0,1,0)
-   sceneGroup:insert(buttonGameOne)
-
-   buttonGameTwo = display.newRoundedRect(display.contentCenterX + 200, display.contentHeight*.2, display.contentHeight*.2, display.contentCenterY*.5, 20)
-   buttonGameTwo:setFillColor(0,1,0)
-   sceneGroup:insert(buttonGameTwo)
-
-   buttonSettings = display.newImage("buttons/circle.png", display.contentWidth*.925, display.contentHeight*.1)
-   buttonSettings.xScale, buttonSettings.yScale = 7, 7
+   buttonSettings = display.newRoundedRect(display.contentWidth*.925, display.contentHeight*.1, display.contentHeight*.1, display.contentHeight*.1, 20)
+   buttonSettings:setFillColor(1,0,0)
    sceneGroup:insert(buttonSettings)
 
+   if #completedMaps == 1  then
+		level1Select:setFillColor(1,0,0)
+		level1Select:addEventListener("tap", gotoLevel1)
+	else
+		if #completedMaps == 2 then
+			level1Select:setFillColor(1,0,0)
+			level2Select:setFillColor(1,0,0)
+
+			level1Select:addEventListener("tap", gotoLevel1)
+			level2Select:addEventListener("tap", gotoLevel2)
+		elseif #completedMaps == 3 then
+			level1Select:setFillColor(1,0,0)
+			level2Select:setFillColor(1,0,0)
+			level3Select:setFillColor(1,0,0)
+
+			level1Select:addEventListener("tap", gotoLevel1)
+			level2Select:addEventListener("tap", gotoLevel2)
+			level3Select:addEventListener("tap", gotoLevel3)
+		end
+	end
+
+	sceneGroup:insert(level1Select)
+	sceneGroup:insert(level2Select)
+	sceneGroup:insert(level3Select)
+
    buttonTitle:addEventListener("tap", gotoSceneTitlePage)
-   buttonGameOne:addEventListener("tap", gotoSceneGameOne)
-   buttonGameTwo:addEventListener("tap", gotoSceneGameTwo)
    buttonSettings:addEventListener("tap", gotoSceneSettings)
 
    -- Initialize the scene here.
